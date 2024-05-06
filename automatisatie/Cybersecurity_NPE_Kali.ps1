@@ -44,9 +44,6 @@ VBoxManage storageattach $vm_name `
   --medium $mediumLocation
 
 VBoxManage modifyvm $vm_name --nic1 nat 
-VBoxManage guestproperty set $vm_name "/VirtualBox/GuestInfo/Net/0/V4/IP" "192.168.1.9"
-VBoxManage guestproperty set $vm_name "/VirtualBox/GuestInfo/Net/0/V4/Netmask" "255.255.255.0"
-VBoxManage guestproperty set $vm_name "/VirtualBox/GuestInfo/Net/0/V4/Gateway" "10.0.2.2"
 
 VBoxManage startvm $vm_name
 
