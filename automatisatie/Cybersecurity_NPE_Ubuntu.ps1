@@ -4,9 +4,10 @@ if (-not (Test-Path -Path "$env:PATH" -PathType Container -Include $virtualBoxPa
 } else {
 }
 
-$vm_name="Cybersecurity_NPE_Ubuntu"
+$vm_name="Cybersecurity_NPE_Ubuntu (Vulnerable)"
 $sharedFolder="C:\NPECybersecurity\sharedfolder"
 $mediumLocation="C:\NPECybersecurity\medium\Ubuntu 22.04 (64bit).vdi"
+$guestAdditions="C:\NPECybersecurity\medium\VBoxGuestAdditions_7.0.14.iso"
 
 # Maak de VM aan
 VBoxManage createvm --name $vm_name `
@@ -42,6 +43,14 @@ VBoxManage storageattach $vm_name `
   --device 0 `
   --type hdd `
   --medium $mediumLocation
+
+  VBoxManage storageattach $vm_name `
+  --storagectl "SATA Controller" `
+  --port 1 `
+  --device 0 `
+  --type dvddrive `
+  --medium $guestAdditions
+  
 
 VBoxManage modifyvm $vm_name --nic1 nat 
 
