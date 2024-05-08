@@ -51,8 +51,9 @@ VBoxManage storageattach $vm_name `
   --type dvddrive `
   --medium $guestAdditions
   
+$interface = Get-NetAdapter | Where-Object {$_.Status -eq "Up"} | Select-Object -First 1 -ExpandProperty Name
 
-VBoxManage modifyvm $vm_name --nic1 nat 
+VBoxManage modifyvm $vm_name --nic1 bridged --bridgeadapter1 $interface
 
 VBoxManage startvm $vm_name
 
