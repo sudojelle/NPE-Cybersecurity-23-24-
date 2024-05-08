@@ -43,7 +43,9 @@ VBoxManage storageattach $vm_name `
   --type hdd `
   --medium $mediumLocation
 
-VBoxManage modifyvm $vm_name --nic1 nat 
+$interface = Get-NetAdapter | Where-Object {$_.Status -eq "Up"} | Select-Object -First 1 -ExpandProperty Name
+
+VBoxManage modifyvm $vm_name --nic1 bridged --bridgeadapter1 $interface
 
 VBoxManage startvm $vm_name
 
