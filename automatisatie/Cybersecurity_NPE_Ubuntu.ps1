@@ -51,7 +51,7 @@ VBoxManage storageattach $vm_name `
   --type dvddrive `
   --medium $guestAdditions
   
-$interface = Get-NetAdapter | Where-Object {$_.Status -eq "Up"} | Select-Object -First 1 -ExpandProperty Name
+$interface = (Get-WmiObject -Query "SELECT * FROM Win32_NetworkAdapter WHERE NetEnabled = true AND Name LIKE '%Wireless%'").Name
 
 VBoxManage modifyvm $vm_name --nic1 bridged --bridgeadapter1 $interface
 
