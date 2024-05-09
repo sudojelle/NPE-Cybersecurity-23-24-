@@ -31,7 +31,6 @@ We gebruiken alvast het volgende:
 - Uit de repository, download en run de PS1 scriptjes: `./Cybersecurity_NPE_Kali.ps1` en `./Cybersecurity_NPE_Ubuntu (Vulnerable).ps1`.
 - De virtuele machines worden nu aangemaakt, na het opstarten van de VMs kan je inloggen met credentials `osboxes` en `osboxes.org`.
 <img width="175" alt="ubuntuinlog" src="https://github.com/sudojelle/NPE-Cybersecurity-23-24-/assets/126736772/799ca501-8213-4b56-a812-996c77b4b5aa">
-
 Ter info: De virtuele machines gebruiken **bridged adapters**, en we gebruiken simpelweg DHCP om de IP-adressen in te stellen, in plaats van dit statisch te doen. Voer dus zeker eens het commando `ip a` uit om de IP-adressen op te halen van de 2 VMs.
 
 **Stap 2: Het opstellen van de omgeving in de Ubuntu VM**
