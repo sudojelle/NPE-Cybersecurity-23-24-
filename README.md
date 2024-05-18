@@ -47,7 +47,7 @@ Ter info: De virtuele machines gebruiken **bridged adapters**, en we gebruiken s
   
 <img width="423" alt="clonerepo" src="https://github.com/sudojelle/NPE-Cybersecurity-23-24-/assets/126736772/f4fdd255-6297-4183-aedb-cad47261e78e">
 
-- Voer het script `./opzetten_omgeving` uit.
+- Voer het script `./opzetten_omgeving` uit. (run het in root user mode en doe chmod +x ./opzetten_omgeving).
 - Wacht een beetje, en kijk daarna eens via `cd /var/www/` of de ha-proxy directory is aangemaakt.
 - Surf naar `https://ip_adres`, normaal bekom je het volgende:
   
